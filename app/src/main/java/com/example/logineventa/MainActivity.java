@@ -49,6 +49,40 @@ public class MainActivity extends AppCompatActivity {
                 else if(password.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
                 }
+                else {
+                    //delete data
+                    myRef.child(rollno).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                Toast.makeText(MainActivity.this, "Failure", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+
+
+//                else {
+//                    //update data
+//                    HashMap user = new HashMap();
+//                    user.put("password",password);
+//                    myRef.child(rollno).updateChildren(user).addOnCompleteListener(new OnCompleteListener() {
+//                        @Override
+//                        public void onComplete(@NonNull Task task) {
+//                            if(task.isSuccessful()){
+//                                Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
+//                            }
+//                            else {
+//                                Toast.makeText(MainActivity.this, "Failure", Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//                    });
+//                }
+
+
 
 //                else {
 //                    User user= new User(Integer.parseInt(rollno), password);
@@ -62,61 +96,61 @@ public class MainActivity extends AppCompatActivity {
 //                    });
 //                }
 
-                else {
-
-                    myRef.child(rollno).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DataSnapshot> task) {
-                            if(task.isSuccessful()){
-                                if(task.getResult().exists()) {
-                                    DataSnapshot dataSnapshot = task.getResult();
-                                    Toast.makeText(MainActivity.this, dataSnapshot.child("password").getValue().toString(), Toast.LENGTH_SHORT).show();
-                                }
-                                else {
-                                    Toast.makeText(MainActivity.this, "Data does not exist", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                            else {
-                                Toast.makeText(MainActivity.this, "Fail to read data", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-
-//                    myRef.addValueEventListener(new ValueEventListener() {
+//                else {
+//
+//                    myRef.child(rollno).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
 //                        @Override
-//                        public void onDataChange(DataSnapshot dataSnapshot) {
-//                            // This method is called once with the initial value and again
-//                            // whenever data at this location is updated.
-//
-//                            // this method is call to get the realtime
-//                            // updates in the data.
-//                            // this method is called when the data is
-//                            // changed in our Firebase console.
-//                            // below line is for getting the data from
-//                            // snapshot of our database.
-//                            for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-//                                User user = dataSnapshot1.getValue(User.class);
-//                                Toast.makeText(MainActivity.this, String.valueOf(user.getRollNumber()), Toast.LENGTH_SHORT).show();
-//
-////                                if(rollno.equalsIgnoreCase(String.valueOf(user.getRollNumber()))&&password.equalsIgnoreCase(user.getPassword())){
-////                                    Toast.makeText(MainActivity.this, "sign in", Toast.LENGTH_SHORT).show();
-////                                }
-////                                else {
-////                                    Toast.makeText(MainActivity.this, "Wrong credentials", Toast.LENGTH_SHORT).show();
-////                                }
+//                        public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                            if(task.isSuccessful()){
+//                                if(task.getResult().exists()) {
+//                                    DataSnapshot dataSnapshot = task.getResult();
+//                                    Toast.makeText(MainActivity.this, dataSnapshot.child("password").getValue().toString(), Toast.LENGTH_SHORT).show();
+//                                }
+//                                else {
+//                                    Toast.makeText(MainActivity.this, "Data does not exist", Toast.LENGTH_SHORT).show();
+//                                }
 //                            }
-//
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(DatabaseError error) {
-//                            // Failed to read value
-//                            // calling on cancelled method when we receive
-//                            // any error or we are not able to get the data.
-//                            Toast.makeText(MainActivity.this, "Fail to get data.", Toast.LENGTH_SHORT).show();
+//                            else {
+//                                Toast.makeText(MainActivity.this, "Fail to read data", Toast.LENGTH_SHORT).show();
+//                            }
 //                        }
 //                    });
-                }
+//
+////                    myRef.addValueEventListener(new ValueEventListener() {
+////                        @Override
+////                        public void onDataChange(DataSnapshot dataSnapshot) {
+////                            // This method is called once with the initial value and again
+////                            // whenever data at this location is updated.
+////
+////                            // this method is call to get the realtime
+////                            // updates in the data.
+////                            // this method is called when the data is
+////                            // changed in our Firebase console.
+////                            // below line is for getting the data from
+////                            // snapshot of our database.
+////                            for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+////                                User user = dataSnapshot1.getValue(User.class);
+////                                Toast.makeText(MainActivity.this, String.valueOf(user.getRollNumber()), Toast.LENGTH_SHORT).show();
+////
+//////                                if(rollno.equalsIgnoreCase(String.valueOf(user.getRollNumber()))&&password.equalsIgnoreCase(user.getPassword())){
+//////                                    Toast.makeText(MainActivity.this, "sign in", Toast.LENGTH_SHORT).show();
+//////                                }
+//////                                else {
+//////                                    Toast.makeText(MainActivity.this, "Wrong credentials", Toast.LENGTH_SHORT).show();
+//////                                }
+////                            }
+////
+////                        }
+////
+////                        @Override
+////                        public void onCancelled(DatabaseError error) {
+////                            // Failed to read value
+////                            // calling on cancelled method when we receive
+////                            // any error or we are not able to get the data.
+////                            Toast.makeText(MainActivity.this, "Fail to get data.", Toast.LENGTH_SHORT).show();
+////                        }
+////                    });
+//                }
 
             }
         });
