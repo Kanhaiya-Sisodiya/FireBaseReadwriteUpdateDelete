@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "200590369991",
+    "firebase_url": "https://login01-cd6ba-default-rtdb.firebaseio.com",
+    "project_id": "login01-cd6ba",
+    "storage_bucket": "login01-cd6ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:200590369991:android:75302b76e794dce2530ae2",
+        "android_client_info": {
+          "package_name": "com.example.logineventa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "200590369991-6s3r1iufna4amsuneuca6at3r49dlstr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFNNGVspuhs_Gq5l7uKdCTpiDOcKSoZbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "200590369991-6s3r1iufna4amsuneuca6at3r49dlstr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
